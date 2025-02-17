@@ -5,13 +5,13 @@ namespace App\Repositories\ActivityCategory;
 interface ActivityCategoryRepositoryInterface
 {
 
-    function index();
+    function index(array $data);
 
-    public function show();
+    public function show(array $data);
 
-    public function store();
+    public function store(array $data);
 
-    public function update();
+    public function update(array $data);
 
-    public function delete();
+    public function delete(array $data);
 }

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActivityCategory\DeleteActivityCategoryRequest;
+use App\Http\Requests\ActivityCategory\IndexActivityCategoryRequest;
+use App\Http\Requests\ActivityCategory\ShowActivityCategoryRequest;
+use App\Http\Requests\ActivityCategory\StoreActivityCategoryRequest;
+use App\Http\Requests\ActivityCategory\UpdateActivityCategoryRequest;
 use App\Repositories\ActivityCategory\ActivityCategoryRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 
@@ -15,28 +20,28 @@ class ActivityCategoryController extends Controller
 
     }
 
-    public function index(): JsonResponse
+    public function index(IndexActivityCategoryRequest $request): JsonResponse
     {
-        return response()->json($this->activityCategoryRepositoryInterface->index());
+        return response()->json($this->activityCategoryRepositoryInterface->index($request->validated()));
     }
 
-    public function show(): JsonResponse
+    public function show(ShowActivityCategoryRequest $request): JsonResponse
     {
-        return response()->json($this->activityCategoryRepositoryInterface->show());
+        return response()->json($this->activityCategoryRepositoryInterface->show($request->validated()));
     }
 
-    public function store(): JsonResponse
+    public function store(StoreActivityCategoryRequest $request): JsonResponse
     {
-        return response()->json($this->activityCategoryRepositoryInterface->store());
+        return response()->json($this->activityCategoryRepositoryInterface->store($request->validated()));
     }
 
-    public function update(): JsonResponse
+    public function update(UpdateActivityCategoryRequest $request): JsonResponse
     {
-        return response()->json($this->activityCategoryRepositoryInterface->update());
+        return response()->json($this->activityCategoryRepositoryInterface->update($request->validated()));
     }
 
-    public function delete(): JsonResponse
+    public function delete(DeleteActivityCategoryRequest $request): JsonResponse
     {
-        return response()->json($this->activityCategoryRepositoryInterface->delete());
+        return response()->json($this->activityCategoryRepositoryInterface->delete($request->validated()));
     }
 }
