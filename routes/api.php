@@ -5,6 +5,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyPhoneController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -46,4 +47,12 @@ Route::prefix('companies')->group(function () {
     Route::post('/', [CompanyController::class, 'store']);
     Route::put('/{id}', [CompanyController::class, 'update']);
     Route::delete('/{id}', [CompanyController::class, 'delete']);
+});
+
+Route::prefix('company_phones')->group(function () {
+    Route::get('/', [CompanyPhoneController::class, 'index']);
+    Route::get('/{id}', [CompanyPhoneController::class, 'show']);
+    Route::post('/', [CompanyPhoneController::class, 'store']);
+    Route::put('/{id}', [CompanyPhoneController::class, 'update']);
+    Route::delete('/{id}', [CompanyPhoneController::class, 'delete']);
 });
