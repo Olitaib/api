@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Request;
+use App\Http\Requests\Activity\DeleteActivityRequest;
+use App\Http\Requests\Activity\IndexActivityRequest;
+use App\Http\Requests\Activity\ShowActivityRequest;
+use App\Http\Requests\Activity\StoreActivityRequest;
+use App\Http\Requests\Activity\UpdateActivityRequest;
 use App\Repositories\Activity\ActivityRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 
@@ -15,27 +19,27 @@ class ActivityController extends Controller
     {
     }
 
-    function index(Request $request): JsonResponse
+    function index(IndexActivityRequest $request): JsonResponse
     {
         return response()->json($this->activityRepositoryInterface->index($request->validated()));
     }
 
-    public function show(Request $request): JsonResponse
+    public function show(ShowActivityRequest $request): JsonResponse
     {
         return response()->json($this->activityRepositoryInterface->show($request->validated()));
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(StoreActivityRequest $request): JsonResponse
     {
         return response()->json($this->activityRepositoryInterface->store($request->validated()));
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(UpdateActivityRequest $request): JsonResponse
     {
         return response()->json($this->activityRepositoryInterface->update($request->validated()));
     }
 
-    public function delete(Request $request): JsonResponse
+    public function delete(DeleteActivityRequest $request): JsonResponse
     {
         return response()->json($this->activityRepositoryInterface->delete($request->validated()));
     }
