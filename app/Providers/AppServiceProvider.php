@@ -10,6 +10,8 @@ use App\Repositories\ActivityType\ActivityTypeEloquentRepository;
 use App\Repositories\ActivityType\ActivityTypeRepositoryInterface;
 use App\Repositories\Building\BuildingEloquentRepository;
 use App\Repositories\Building\BuildingRepositoryInterface;
+use App\Repositories\Company\CompanyEloquentRepository;
+use App\Repositories\Company\CompanyRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ActivityTypeRepositoryInterface::class, ActivityTypeEloquentRepository::class);
         $this->app->bind(ActivityRepositoryInterface::class, ActivityEloquentRepository::class);
         $this->app->bind(BuildingRepositoryInterface::class, BuildingEloquentRepository::class);
+        $this->app->bind(CompanyRepositoryInterface::class, CompanyEloquentRepository::class);
     }
 
     /**
