@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
+use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,4 +29,12 @@ Route::prefix('activities')->group(function () {
     Route::post('/', [ActivityController::class, 'store']);
     Route::put('/{id}', [ActivityController::class, 'update']);
     Route::delete('/{id}', [ActivityController::class, 'delete']);
+});
+
+Route::prefix('buildings')->group(function () {
+    Route::get('/', [BuildingController::class, 'index']);
+    Route::get('/{id}', [BuildingController::class, 'show']);
+    Route::post('/', [BuildingController::class, 'store']);
+    Route::put('/{id}', [BuildingController::class, 'update']);
+    Route::delete('/{id}', [BuildingController::class, 'delete']);
 });
