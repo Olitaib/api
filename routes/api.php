@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,4 +38,12 @@ Route::prefix('buildings')->group(function () {
     Route::post('/', [BuildingController::class, 'store']);
     Route::put('/{id}', [BuildingController::class, 'update']);
     Route::delete('/{id}', [BuildingController::class, 'delete']);
+});
+
+Route::prefix('companies')->group(function () {
+    Route::get('/', [CompanyController::class, 'index']);
+    Route::get('/{id}', [CompanyController::class, 'show']);
+    Route::post('/', [CompanyController::class, 'store']);
+    Route::put('/{id}', [CompanyController::class, 'update']);
+    Route::delete('/{id}', [CompanyController::class, 'delete']);
 });
