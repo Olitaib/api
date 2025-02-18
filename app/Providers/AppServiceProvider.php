@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Activity\ActivityEloquentRepository;
+use App\Repositories\Activity\ActivityRepositoryInterface;
 use App\Repositories\ActivityCategory\ActivityCategoryEloquentRepository;
 use App\Repositories\ActivityCategory\ActivityCategoryRepositoryInterface;
 use App\Repositories\ActivityType\ActivityTypeEloquentRepository;
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ActivityCategoryRepositoryInterface::class, ActivityCategoryEloquentRepository::class);
         $this->app->bind(ActivityTypeRepositoryInterface::class, ActivityTypeEloquentRepository::class);
+        $this->app->bind(ActivityRepositoryInterface::class, ActivityEloquentRepository::class);
     }
 
     /**
