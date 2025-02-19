@@ -25,7 +25,7 @@ class StoreCompanyActivityTypeRequest extends Request
                 'exists:companies,id',
                 Rule::exists('company_activity_categories')->where(function ($query) {
                     $query->where('company_id', $this->input('company_id'))
-                        ->where('activity_category_id', ActivityType::where('id', $this->input('activity_type_id'))->first()->activity_category_id);
+                        ->where('activity_category_id', ActivityType::where('id', $this->input('activity_type_id'))->first()?->activity_category_id);
                 })
             ]
         ];
