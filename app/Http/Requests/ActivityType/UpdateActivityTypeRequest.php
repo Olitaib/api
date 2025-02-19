@@ -26,7 +26,7 @@ class UpdateActivityTypeRequest extends Request
                 'min:2',
                 'max:255',
                 Rule::unique('activity_types')->where(function ($query) {
-                    $query->where('activity_category_id', $this->input('activity_category_id') ?? ActivityType::find($this->input('id'))->activity_category_id);
+                    $query->where('activity_category_id', $this->input('activity_category_id') ?? ActivityType::find($this->input('id'))?->activity_category_id);
                 })
             ],
             'activity_category_id' => [
@@ -34,7 +34,7 @@ class UpdateActivityTypeRequest extends Request
                 'integer',
                 'exists:activity_categories,id',
                 Rule::unique('activity_types')->where(function ($query) {
-                    $query->where('name', $this->input('name') ?? ActivityType::find($this->input('id'))->name);
+                    $query->where('name', $this->input('name') ?? ActivityType::find($this->input('id'))?->name);
                 })
             ],
         ];
