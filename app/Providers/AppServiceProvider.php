@@ -12,6 +12,8 @@ use App\Repositories\Building\BuildingEloquentRepository;
 use App\Repositories\Building\BuildingRepositoryInterface;
 use App\Repositories\Company\CompanyEloquentRepository;
 use App\Repositories\Company\CompanyRepositoryInterface;
+use App\Repositories\CompanyActivity\CompanyActivityEloquentRepository;
+use App\Repositories\CompanyActivity\CompanyActivityRepositoryInterface;
 use App\Repositories\CompanyActivityCategory\CompanyActivityCategoryEloquentRepository;
 use App\Repositories\CompanyActivityCategory\CompanyActivityCategoryRepositoryInterface;
 use App\Repositories\CompanyActivityType\CompanyActivityTypeEloquentRepository;
@@ -35,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CompanyPhoneRepositoryInterface::class, CompanyPhoneEloquentRepository::class);
         $this->app->bind(CompanyActivityCategoryRepositoryInterface::class, CompanyActivityCategoryEloquentRepository::class);
         $this->app->bind(CompanyActivityTypeRepositoryInterface::class, CompanyActivityTypeEloquentRepository::class);
+        $this->app->bind(CompanyActivityRepositoryInterface::class, CompanyActivityEloquentRepository::class);
     }
 
     /**
