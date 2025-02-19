@@ -5,6 +5,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\CompanyActivityCategoryController;
+use App\Http\Controllers\CompanyActivityTypeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyPhoneController;
 use Illuminate\Support\Facades\Route;
@@ -61,4 +62,9 @@ Route::prefix('company_phones')->group(function () {
 Route::prefix('company_activity_categories')->group(function () {
     Route::post('/', [CompanyActivityCategoryController::class, 'store']);
     Route::delete('/{id}', [CompanyActivityCategoryController::class, 'delete']);
+});
+
+Route::prefix('company_activity_types')->group(function () {
+    Route::post('/', [CompanyActivityTypeController::class, 'store']);
+    Route::delete('/{id}', [CompanyActivityTypeController::class, 'delete']);
 });
