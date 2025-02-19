@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\CompanyActivityCategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyPhoneController;
 use Illuminate\Support\Facades\Route;
@@ -55,4 +56,9 @@ Route::prefix('company_phones')->group(function () {
     Route::post('/', [CompanyPhoneController::class, 'store']);
     Route::put('/{id}', [CompanyPhoneController::class, 'update']);
     Route::delete('/{id}', [CompanyPhoneController::class, 'delete']);
+});
+
+Route::prefix('company_activity_categories')->group(function () {
+    Route::post('/', [CompanyActivityCategoryController::class, 'store']);
+    Route::delete('/{id}', [CompanyActivityCategoryController::class, 'delete']);
 });
