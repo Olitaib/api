@@ -3,6 +3,7 @@ TEMP_SERVICE_NAME = php
 PGSQL_SERVICE= pgsql
 
 start:
+	cp .env.example .env
 	docker compose run --rm $(TEMP_SERVICE_NAME) composer install
 	@echo "Установка зависимостей..."
 	docker compose up -d $(PGSQL_SERVICE)
