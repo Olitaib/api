@@ -14,7 +14,7 @@ class StoreActivityTypeRequest extends Request
             'name' => [
                 'required',
                 'string',
-                'min:2',
+                'min:1',
                 'max:255',
                 Rule::unique('activity_types')->where(function ($query) {
                     $query->where('activity_category_id', $this->input('activity_category_id'));
