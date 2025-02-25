@@ -1,0 +1,1583 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API",
+        "description": "REST API for Companies, Activities and Buildings",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://0.0.0.0:8000/api",
+            "description": "local"
+        }
+    ],
+    "paths": {
+        "/activities": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Get all Activities",
+                "description": "",
+                "operationId": "c2ddc365754d3e9643b0f7fe4cc95299",
+                "parameters": [
+                    {
+                        "name": "activity_type_id",
+                        "in": "query",
+                        "description": "ID ActivityType",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Store new Activity",
+                "description": "",
+                "operationId": "91a577a0c996371013c849d1d9a38944",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "activity_type_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of Activity, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1
+                                    },
+                                    "activity_type_id": {
+                                        "description": "ID ActivityType",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/activities/{id}": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Get Activity by ID",
+                "description": "",
+                "operationId": "5baef665e18a5c806e3513fdc4123398",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Activity",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Update existing Activity",
+                "description": "",
+                "operationId": "e50aad3501cf5d6242be0a5b2ec3bdec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Activity",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of Activity, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1,
+                                        "nullable": false
+                                    },
+                                    "activity_type_id": {
+                                        "description": "ID ActivityType",
+                                        "type": "integer",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Delete Activity by ID",
+                "description": "",
+                "operationId": "7137ea18124f6e64406e340ba2048a97",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Activity",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/activity_categories": {
+            "get": {
+                "tags": [
+                    "ActivityCategories"
+                ],
+                "summary": "Get all ActivityCategories",
+                "description": "",
+                "operationId": "d7f7588102d3ed3c13aa45a92c225a20",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "ActivityCategories"
+                ],
+                "summary": "Store new ActivityCategory",
+                "description": "",
+                "operationId": "22635e04c5a5530a2fafc8d6caefd20f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of ActivityCategory, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1,
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/activity_categories/{id}": {
+            "get": {
+                "tags": [
+                    "ActivityCategories"
+                ],
+                "summary": "Get ActivityCategory by ID",
+                "description": "",
+                "operationId": "5ce3fbfa7e2589b83b47cccfc3b81e28",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID ActivityCategory, must exist",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "ActivityCategories"
+                ],
+                "summary": "Update existing ActivityCategory",
+                "description": "",
+                "operationId": "6ee8099a0608dac1c485e9bed4a92fcf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID ActivityCategory",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of ActivityCategory, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1,
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ActivityCategories"
+                ],
+                "summary": "Delete ActivityCategory by ID",
+                "description": "",
+                "operationId": "4f547ce9dd940d60ab098504d752afa9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID ActivityCategory, must exist",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/activity_types": {
+            "get": {
+                "tags": [
+                    "ActivityTypes"
+                ],
+                "summary": "Get all ActivityTypes",
+                "description": "",
+                "operationId": "a1862ea0bc4b5a2868efa899e6fe6886",
+                "parameters": [
+                    {
+                        "name": "activity_category_id",
+                        "in": "query",
+                        "description": "ID ActivityCategory",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "ActivityTypes"
+                ],
+                "summary": "Store new ActivityType",
+                "description": "",
+                "operationId": "59c18bb311811075d52dbbe41823f725",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "activity_category_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of ActivityType, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1
+                                    },
+                                    "activity_category_id": {
+                                        "description": "ID ActivityCategory",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/activity_types/{id}": {
+            "get": {
+                "tags": [
+                    "ActivityTypes"
+                ],
+                "summary": "Get ActivityType by ID",
+                "description": "",
+                "operationId": "50a5f63cc0b9f152257b348f040dafdf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID ActivityType",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "ActivityTypes"
+                ],
+                "summary": "Update existing ActivityType",
+                "description": "",
+                "operationId": "f32963180a05a15bba69b90dd10775b5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID ActivityType",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of ActivityType, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1,
+                                        "nullable": false
+                                    },
+                                    "activity_category_id": {
+                                        "description": "ID ActivityCategory",
+                                        "type": "integer",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ActivityTypes"
+                ],
+                "summary": "Delete ActivityType by ID",
+                "description": "",
+                "operationId": "ce5f290a07cdccc48e0d0d4261494c1b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID ActivityType",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/buildings": {
+            "get": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "Get all Buildings",
+                "description": "",
+                "operationId": "b62f9943a9978d639a422d9ea48f7da9",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "Store new Building",
+                "description": "",
+                "operationId": "87a3e164e8c17bf1b88458ce2417957e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "address",
+                                    "latitude",
+                                    "longitude"
+                                ],
+                                "properties": {
+                                    "address": {
+                                        "description": "Address",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1
+                                    },
+                                    "latitude": {
+                                        "description": "Latitude of address, float",
+                                        "type": "number",
+                                        "example": 55.7522
+                                    },
+                                    "longitude": {
+                                        "description": "Longitude of address, float",
+                                        "type": "number",
+                                        "example": 37.6156
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/buildings/{id}": {
+            "get": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "Get Building by ID",
+                "description": "",
+                "operationId": "bc2dc2fb136506bb55d96bee2bf1b9a9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Building",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "Update existing Building",
+                "description": "",
+                "operationId": "4d78d3147d864dadcaeb1dce2b38b261",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Building",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "required at least one",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "address": {
+                                        "description": "Address",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1
+                                    },
+                                    "latitude": {
+                                        "description": "Latitude of address, float",
+                                        "type": "number",
+                                        "example": 55.7522
+                                    },
+                                    "longitude": {
+                                        "description": "Longitude of address, float",
+                                        "type": "number",
+                                        "example": 37.6156
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "Delete Building by ID",
+                "description": "",
+                "operationId": "b876e0e098beaa052555a064b9a480b3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Building",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_activities": {
+            "post": {
+                "tags": [
+                    "CompanyActivities"
+                ],
+                "summary": "Add new Relation between Company and Activity",
+                "description": "",
+                "operationId": "87a4a6b6d31d0e3d136877e28e00ea34",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "activity_id",
+                                    "company_id"
+                                ],
+                                "properties": {
+                                    "activity_id": {
+                                        "description": "ID Activity, must exist & must unique with company_id",
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "description": "ID Company, must exist & Company must have relation with parental ActivityType",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_activities/{id}": {
+            "delete": {
+                "tags": [
+                    "CompanyActivities"
+                ],
+                "summary": "Delete Relation between Company and Activity by ID",
+                "description": "",
+                "operationId": "cb80a771b4dea81489a79d97a51a431d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Activities",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_activity_categories": {
+            "post": {
+                "tags": [
+                    "CompanyActivityCategories"
+                ],
+                "summary": "Add new Relation between Company and ActivityCategory",
+                "description": "",
+                "operationId": "639b0764e0225ac176b44b9f36e8e182",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "activity_category_id",
+                                    "company_id"
+                                ],
+                                "properties": {
+                                    "activity_category_id": {
+                                        "description": "ID ActivityCategory, must exist",
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "description": "ID Company, must exist",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_activity_categories/{id}": {
+            "delete": {
+                "tags": [
+                    "CompanyActivityCategories"
+                ],
+                "summary": "Delete Relation between Company and ActivityCategory by ID",
+                "description": "",
+                "operationId": "3297c36966c223d7285260bef3bb9a0a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID CompanyActivityCategories",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_activity_types": {
+            "post": {
+                "tags": [
+                    "CompanyActivityTypes"
+                ],
+                "summary": "Add new Relation between Company and ActivityType",
+                "description": "",
+                "operationId": "d0bb51158065e44793fdd0a1ba8ad1f0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "activity_type_id",
+                                    "company_id"
+                                ],
+                                "properties": {
+                                    "activity_type_id": {
+                                        "description": "ID ActivityType, must exist & must unique with company_id",
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "description": "ID Company, must exist & Company must have relation with parental ActivityCategory",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_activity_types/{id}": {
+            "delete": {
+                "tags": [
+                    "CompanyActivityTypes"
+                ],
+                "summary": "Delete Relation between Company and ActivityType by ID",
+                "description": "",
+                "operationId": "c46bda43808e85fce793a138b506a17f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID CompanyActivityTypes",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/companies": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get all Companies",
+                "description": "",
+                "operationId": "1c995df9587090c17390f17c70b9d960",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of Company",
+                        "required": false
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Address of Building",
+                        "required": false
+                    },
+                    {
+                        "name": "building_id",
+                        "in": "query",
+                        "description": "ID Building, must exist",
+                        "required": false
+                    },
+                    {
+                        "name": "activity_category_id",
+                        "in": "query",
+                        "description": "ID ActivityCategory, must exist",
+                        "required": false
+                    },
+                    {
+                        "name": "activity_type_id",
+                        "in": "query",
+                        "description": "ID ActivityType, must exist",
+                        "required": false
+                    },
+                    {
+                        "name": "activity_id",
+                        "in": "query",
+                        "description": "ID Activity, must exist",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Store new Company",
+                "description": "",
+                "operationId": "f859ba549b90b2c6a3876e0017fdb98b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "building_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of Company, must be unique",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1
+                                    },
+                                    "building_id": {
+                                        "description": "ID Building",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get Company by ID",
+                "description": "",
+                "operationId": "1a6b881dc4dc74cee5843ca9982e41fd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Company",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Update existing Company",
+                "description": "",
+                "operationId": "0a1fde3df2eaca6201020f2239df8552",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Company",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "required at least one",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of Company",
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 1
+                                    },
+                                    "building_id": {
+                                        "description": "ID Building",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Delete Company by ID",
+                "description": "",
+                "operationId": "921122760de36d4ac527dd8ad25512b1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Company",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_phones": {
+            "get": {
+                "tags": [
+                    "CompanyPhones"
+                ],
+                "summary": "Get all CompanyPhones",
+                "description": "",
+                "operationId": "cc8513447766d899d5e327d986f60e78",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "ID Company",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "CompanyPhones"
+                ],
+                "summary": "Store new CompanyPhone",
+                "description": "",
+                "operationId": "fd0ea011a575c306f9d261184140e967",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "country_code",
+                                    "area_code",
+                                    "phone_number",
+                                    "company_id"
+                                ],
+                                "properties": {
+                                    "country_code": {
+                                        "description": "Country Code, must be unique with area_code & phone_number",
+                                        "type": "integer"
+                                    },
+                                    "area_code": {
+                                        "description": "Area Code, must be unique with country_code & phone_number",
+                                        "type": "integer"
+                                    },
+                                    "phone_number": {
+                                        "description": "Phone Number, must be unique with country_code & area_code",
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "description": "ID Company, must exist",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        },
+        "/company_phones/{id}": {
+            "get": {
+                "tags": [
+                    "CompanyPhones"
+                ],
+                "summary": "Get CompanyPhone by ID",
+                "description": "",
+                "operationId": "b32de9d4b3a63080310d0c890502355f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID CompanyPhone",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "CompanyPhones"
+                ],
+                "summary": "Update existing CompanyPhone",
+                "description": "",
+                "operationId": "9747bedff4d3d3c5cd5ced963288ebc1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID CompanyPhone",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "required at least one",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "country_code": {
+                                        "description": "Country Code, must be unique with area_code & phone_number",
+                                        "type": "integer"
+                                    },
+                                    "area_code": {
+                                        "description": "Area Code, must be unique with country_code & phone_number",
+                                        "type": "integer"
+                                    },
+                                    "phone_number": {
+                                        "description": "Phone Number, must be unique with country_code & area_code",
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "description": "ID Company, must exist",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "CompanyPhones"
+                ],
+                "summary": "Delete CompanyPhone by ID",
+                "description": "",
+                "operationId": "6ba6d0239de6819498985aea13a67f3f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID CompanyPhone",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "Failed Validation"
+                    },
+                    "403": {
+                        "description": "Forbidden, wrong or empty ApiKey"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKey": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "ApiKey": {
+                "type": "apiKey",
+                "name": "x-api-key",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Activities",
+            "description": "Activities"
+        },
+        {
+            "name": "ActivityCategories",
+            "description": "ActivityCategories"
+        },
+        {
+            "name": "ActivityTypes",
+            "description": "ActivityTypes"
+        },
+        {
+            "name": "Buildings",
+            "description": "Buildings"
+        },
+        {
+            "name": "CompanyActivities",
+            "description": "CompanyActivities"
+        },
+        {
+            "name": "CompanyActivityCategories",
+            "description": "CompanyActivityCategories"
+        },
+        {
+            "name": "CompanyActivityTypes",
+            "description": "CompanyActivityTypes"
+        },
+        {
+            "name": "Companies",
+            "description": "Companies"
+        },
+        {
+            "name": "CompanyPhones",
+            "description": "CompanyPhones"
+        }
+    ]
+}
