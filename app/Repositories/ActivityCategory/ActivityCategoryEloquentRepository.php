@@ -38,8 +38,10 @@ class ActivityCategoryEloquentRepository implements ActivityCategoryRepositoryIn
         return $activityCategory;
     }
 
-    public function delete(array $data): true
+    public function delete(array $data): bool
     {
-        return ActivityCategory::query()->find($data['id'])->delete();
+        return ActivityCategory::query()
+            ->where('id', $data['id'])
+            ->delete();
     }
 }
