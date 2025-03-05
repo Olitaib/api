@@ -15,6 +15,7 @@ namespace App\Http\Controllers\Annotations;
  *          in="query",
  *          description="ID ActivityType"
  *      ),
+ *      @OA\Parameter(name="company_id", required=false, in="query", description="ID Company, must exist"),
  *      @OA\Response(response=200, description="Success"),
  *      @OA\Response(response=422, description="Failed Validation"),
  *      @OA\Response(response=403, description="Forbidden, wrong or empty ApiKey")
