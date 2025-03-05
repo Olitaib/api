@@ -21,20 +21,20 @@ class UpdateActivityTypeRequest extends Request
         return [
             'id' => ['required', 'integer', 'exists:activity_types,id'],
             'name' => [
-                'nullable',
+                'sometimes',
                 'string',
-                'min:2',
+                'min:1',
                 'max:255',
                 Rule::unique('activity_types')->where(function ($query) {
-                    $query->where('activity_category_id', $this->input('activity_category_id') ?? ActivityType::find($this->input('id'))->activity_category_id);
+                    $query->where('activity_category_id', $this->input('activity_category_id') ?? ActivityType::find($this->input('id'))?->activity_category_id);
                 })
             ],
             'activity_category_id' => [
-                'nullable',
+                'sometimes',
                 'integer',
                 'exists:activity_categories,id',
                 Rule::unique('activity_types')->where(function ($query) {
-                    $query->where('name', $this->input('name') ?? ActivityType::find($this->input('id'))->name);
+                    $query->where('name', $this->input('name') ?? ActivityType::find($this->input('id'))?->name);
                 })
             ],
         ];
