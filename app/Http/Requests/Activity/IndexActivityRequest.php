@@ -11,6 +11,7 @@ class IndexActivityRequest extends Request
     {
         return [
             'activity_type_id' => ['required', 'integer', 'exists:activity_types,id'],
+            'company_id' => 'sometimes|integer|exists:companies,id',
         ];
     }
 }
