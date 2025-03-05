@@ -10,7 +10,14 @@ class ActivityCategoryEloquentRepository implements ActivityCategoryRepositoryIn
 
     public function index(array $data): Collection
     {
-        return ActivityCategory::all();
+        return ActivityCategory::query()
+            ->select('ac.id', 'ac.name')
+            ->from('activity_categories as ac')
+            ->when(array_key_exists('company_id', $data), function ($query) use ($data) {
+                $query->join('company_activity_categories as cac', 'cac.activity_category_id', '=', 'ac.id')
+                    ->where('cac.company_id', $data['company_id']);
+            })
+            ->get();
     }
 
     public function show(array $data): ActivityCategory
@@ -31,8 +38,10 @@ class ActivityCategoryEloquentRepository implements ActivityCategoryRepositoryIn
         return $activityCategory;
     }
 
-    public function delete(array $data): true
+    public function delete(array $data): bool
     {
-        return ActivityCategory::query()->find($data['id'])->delete();
+        return ActivityCategory::query()
+            ->where('id', $data['id'])
+            ->delete();
     }
 }

@@ -21,16 +21,16 @@ class UpdateActivityRequest extends Request
         return [
             'id' => ['required', 'integer', 'exists:activities,id'],
             'name' => [
-                'nullable',
+                'sometimes',
                 'string',
-                'min:2',
+                'min:1',
                 'max:255',
                 Rule::unique('activities')->where(function ($query) {
                     $query->where('activity_type_id', $this->input('activity_type_id') ?? Activity::find($this->input('id'))?->activity_type_id);
                 })
             ],
             'activity_type_id' => [
-                'nullable',
+                'sometimes',
                 'integer',
                 'exists:activity_types,id',
                 Rule::unique('activities')->where(function ($query) {
