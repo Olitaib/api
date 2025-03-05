@@ -39,8 +39,10 @@ class ActivityTypeEloquentRepository implements ActivityTypeRepositoryInterface
         return $activityType;
     }
 
-    public function delete(array $data): true
+    public function delete(array $data): bool
     {
-        return ActivityType::query()->find($data['id'])->delete();
+        return ActivityType::query()
+            ->where('id', $data['id'])
+            ->delete();
     }
 }
