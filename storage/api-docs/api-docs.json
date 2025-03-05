@@ -26,6 +26,12 @@
                         "in": "query",
                         "description": "ID ActivityType",
                         "required": true
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "ID Company, must exist",
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -226,6 +232,14 @@
                 "summary": "Get all ActivityCategories",
                 "description": "",
                 "operationId": "d7f7588102d3ed3c13aa45a92c225a20",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "ID Company, must exist",
+                        "required": false
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -424,6 +438,12 @@
                         "in": "query",
                         "description": "ID ActivityCategory",
                         "required": true
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "ID Company, must exist",
+                        "required": false
                     }
                 ],
                 "responses": {
