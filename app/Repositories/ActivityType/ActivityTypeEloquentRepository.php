@@ -11,7 +11,13 @@ class ActivityTypeEloquentRepository implements ActivityTypeRepositoryInterface
     public function index(array $data): Collection
     {
         return ActivityType::query()
-            ->where('activity_category_id', $data['activity_category_id'])
+            ->select('at.id', 'at.name')
+            ->from('activity_types as at')
+            ->where('at.activity_category_id', $data['activity_category_id'])
+            ->when(array_key_exists('company_id', $data), function ($query) use ($data) {
+                $query->join('company_activity_types as cat', 'cat.activity_type_id', '=', 'at.id')
+                    ->where('cat.company_id', $data['company_id']);
+            })
             ->get();
     }
 
