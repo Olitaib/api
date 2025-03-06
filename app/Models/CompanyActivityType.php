@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CompanyActivityType extends Model
 {
+    use HasFactory;
 
     protected $table = 'company_activity_types';
     protected $fillable =
